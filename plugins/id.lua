@@ -74,10 +74,14 @@ local function run(msg, matches)
         end
 if matches[1] == 'id' or 'ایدی' then
      if not is_sudo(msg) then 
+         local hash = 'group:'..msg.to.id  
+         local group_lang = redis:hget(hash,'lang')  
+         if group_lang then
             return "فقد برای منه😂"
         else
             return "😂Only For Abol"
-            end
+        end
+        end
             chat_type = msg.to.type
             chat_id = msg.to.id
             if msg.reply_id then
