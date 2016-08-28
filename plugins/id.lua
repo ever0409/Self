@@ -57,6 +57,9 @@ local function run(msg, matches)
     -- Id of the user and info about group / channel
     if matches[1] == 'gpid' or 'ایدی گروه' then
          if not is_sudo(msg) then 
+             local hash = 'group:'..msg.to.id  
+             local group_lang = redis:hget(hash,'lang')  
+             if group_lang then
             return "فقد برای منه😂"
         else
             return "😂Only For Abol"
