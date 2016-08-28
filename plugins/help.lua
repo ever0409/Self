@@ -128,17 +128,20 @@ function run(msg, matches)
 مثال : !clean msg 100
 
 ➖➖➖➖➖➖
-Team Channel : 😎@BeyondTeam 😎
+Power Team 😃 @Mr_Nitro 😃
 ➖➖➖➖➖➖]]
-    if matches[1] == 'help' and is_sudo(msg) then
-      send_large_msg("user#id"..msg.from.id, help)      
+    if matches[1] == 'help' or 'راهنما' and is_sudo(msg) then
+      send_large_msg("user#id"..msg.from.id, help)    
+      return 'راهنما به پیوی شما ارسال شد😃'
+      else
    return 'Help was sent in your private message'
     end
 end 
 
 return {
   patterns = {
-    "^[!/#](help)$"
+    "^[!/#](help)$",
+    "^(راهنما)$"
   },
   run = run
 }
