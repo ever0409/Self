@@ -17,39 +17,33 @@ local function enable_channel(receiver)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-		return "ربات خاموش نیست♋"
-	else
-		return "♋Bot Not Off To |"..msg.to.title
+		return "Bot Is Not Off :)"
 	end
-	
+
 	_config.disabled_channels[receiver] = false
 
 	save_config()
-	return "ربات روشن شد♋"
-else
-	return "♋Bot Online Now♋"
+	return "Bot Is On Now :D"
 end
 
 local function disable_channel( receiver )
 	if not _config.disabled_channels then
 		_config.disabled_channels = {}
 	end
-	
+
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return "ربات خاموش شد♋"
-else
-	return "♋Bot Offline Now♋"
+	return "Bot Is Off Now :/"
 end
 
 local function pre_process(msg)
 	local receiver = get_receiver(msg)
-	
+
 	-- If sender is moderator then re-enable the channel
 	if is_sudo(msg) then
 	  if msg.text == "/bot on" or msg.text == "/Bot on" or msg.text == "!bot on" or msg.text == "!Bot on" then
-	  
+
 	    enable_channel(receiver)
 	  end
 	end
@@ -64,7 +58,7 @@ end
 local function run(msg, matches)
 	local receiver = get_receiver(msg)
 	-- Enable a channel
-	
+
 	local hash = 'usecommands:'..msg.from.id..':'..msg.to.id
     redis:incr(hash)
 	if not is_sudo(msg) then
