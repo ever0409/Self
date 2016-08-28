@@ -63,7 +63,8 @@ local function run(msg, matches)
             return "فقد برای منه😂"
         else
             return "😂Only For Abol"
-            end
+        end
+        end
 
             if msg.to.type == 'channel' then
                 send_msg(msg.to.peer_id, 'SuperGroup ID: '..msg.to.id, ok_cb, false)
