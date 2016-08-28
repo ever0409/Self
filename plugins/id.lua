@@ -67,11 +67,17 @@ local function run(msg, matches)
         end
 
             if msg.to.type == 'channel' then
+                local hash = 'group:'..msg.to.id  
+                local group_lang = redis:hget(hash,'lang')  
+                if group_lang then
+                    send_msg(msg.to.peer_id, 'ایدی سوپر گروه : '..msg.to.id, ok_cd, false)
+                    else
                 send_msg(msg.to.peer_id, 'SuperGroup ID: '..msg.to.id, ok_cb, false)
             elseif msg.to.type == 'chat' then
                 send_msg(msg.to.peer_id, 'Group ID: '..msg.to.id, ok_cb, false)
             end
-        end
+    end
+    end
 if matches[1] == 'id' or 'ایدی' then
      if not is_sudo(msg) then 
          local hash = 'group:'..msg.to.id  
