@@ -55,9 +55,11 @@ local function run(msg, matches)
     local receiver = get_receiver(msg)
     local chat = msg.to.id
     -- Id of the user and info about group / channel
-    if matches[1] == 'gpid' then
+    if matches[1] == 'gpid' or 'ایدی گروه' then
          if not is_sudo(msg) then 
-            return nil
+            return "فقد برای منه😂"
+        else
+            return "😂Only For Abol"
             end
 
             if msg.to.type == 'channel' then
@@ -66,9 +68,11 @@ local function run(msg, matches)
                 send_msg(msg.to.peer_id, 'Group ID: '..msg.to.id, ok_cb, false)
             end
         end
-if matches[1] == 'id' then
+if matches[1] == 'id' or 'ایدی' then
      if not is_sudo(msg) then 
-            return nil
+            return "فقد برای منه😂"
+        else
+            return "😂Only For Abol"
             end
             chat_type = msg.to.type
             chat_id = msg.to.id
@@ -93,6 +97,8 @@ if matches[1] == 'id' then
 return {
   patterns = {
     "^[!/#](id)$",
+    "^(ایدی)$",
+    "^(ایدی گروه)$",
     "^[!/#](gpid)$",
     "^[!/#](id) (.*)$"
   },
